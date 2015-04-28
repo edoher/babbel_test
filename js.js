@@ -32,5 +32,8 @@ function roll(){
 }
 
 function scoreTrack(){
+	//basically print out the score and any extra info
+    document.getElementById("frame").innerHTML = "Frame: " + currentFrame;
+    document.getElementById("roll").innerHTML = "Roll: " + currentRoll;
     document.getElementById("track").innerHTML = score;
 }
