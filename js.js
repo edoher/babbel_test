@@ -1,32 +1,44 @@
 //Setup initial vars
 var score = 0;
 var totalFrames = 2;
+var pinPerFrame = 2;
 var extraRolls = 0;
 var currentRoll = 1;
 var currentFrame = 1;
+var pins = 10;
+
 var cannotPlay = false;
 
-var sumRolls = 0;
+var hasStrike = false;
 
-var isStrike = false;
-var strikeXtra = 0;
-
-var isSpare = false;
-var spareXtra = 0;
+var hasSpare = false;
 
 //Le functions!
 function roll(){
 	if(cannotPlay == false){
-		var randy = Math.floor(Math.random() * 10) + 1;
+        //random number between 0 - remaining pins
+		var randy = Math.floor(Math.random() * (pins + 1);
 		
 		//add the random score to our sum
 		score += randy;
+        //and substract it from this frame's pins
+		pins -= randy;
+		
+        //if the random number was 10, means we inmediately had all our pins out
+		if(randy == 10){
+			hasStrike = true;
+		}
+        //but is the random number was less than ten and still we managed to take down all of the pins, means we had a Spare
+        if(randy < 10 && pins == 0){
+			hasSpare = true;
+		}
 		
 		currentRoll++;
 		if(currentRoll > totalFrames){
 			if(currentFrame < 2){
 				currentFrame++;
 				currentRoll = 1;
+				sumRollsFrame = 0;
 			}else{
 				gameOver();
 			}
