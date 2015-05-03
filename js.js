@@ -1,6 +1,6 @@
 //Setup initial vars
 var score = 0;
-var totalFrames = 2;
+var totalFrames = 10;
 var rollsPerFrame = 2;
 var currentRoll = 1;
 var currentFrame = 1;
@@ -30,7 +30,7 @@ function roll(){
         //sum all!
         score += randy;
         //check for strike before and sum
-        if(special[currentRollGame-1] == 'stike' || special[currentRollGame-2] == 'stike') score += randy;
+        if(special[currentRollGame-1] == 'strike' || special[currentRollGame-2] == 'strike') score += randy;
         //check for spare before and sum
         if(special[currentRollGame-1] == 'spare') score += randy;
 		
